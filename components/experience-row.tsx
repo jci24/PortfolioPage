@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Anchor, Grid, GridCol, Group, Stack, Text } from "@mantine/core";
 import type { ExperienceItem } from "@/data/types";
@@ -12,7 +13,24 @@ export function ExperienceRow({ item, href }: ExperienceRowProps) {
     <Grid className="timeline-row" gap="lg">
       <GridCol span={{ base: 12, md: 2.5 }}>
         <Group gap="sm" wrap="nowrap">
-          <div className="timeline-mark">{item.label}</div>
+          {item.logoSrc ? (
+            <div
+              className={`timeline-logo${item.logoDark ? " timeline-logo-dark" : ""}`}
+              style={{
+                width: item.logoBoxWidth ?? 56,
+              }}
+            >
+              <Image
+                alt={`${item.company} logo`}
+                className="timeline-logo-image"
+                height={item.logoHeight ?? 28}
+                src={item.logoSrc}
+                width={item.logoWidth ?? 72}
+              />
+            </div>
+          ) : (
+            <div className="timeline-mark">{item.label}</div>
+          )}
           <Text fw={500} size="sm">
             {item.company}
           </Text>

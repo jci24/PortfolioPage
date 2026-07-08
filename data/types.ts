@@ -21,6 +21,11 @@ export type ExperienceItem = {
   slug: string;
   company: string;
   label: string;
+  logoSrc?: string;
+  logoDark?: boolean;
+  logoWidth?: number;
+  logoHeight?: number;
+  logoBoxWidth?: number;
   title: string;
   subtitle?: string;
   period: string;

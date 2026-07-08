@@ -4,10 +4,8 @@
 
 :root {
   color-scheme: light;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    "URW Palladio L", serif;
-  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica,
-    sans-serif;
+  --font-display: "Roboto", sans-serif;
+  --font-body: "Roboto", sans-serif;
   --page-background: #f8faf9;
   --page-foreground: #152230;
   --page-muted: #5e6c78;
@@ -60,12 +58,16 @@ h3 {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .main-shell {
   flex: 1;
+  width: min(100%, 1120px);
+  margin: 0 auto;
   padding-top: 2.5rem;
   padding-bottom: 3.5rem;
+  padding-inline: 1rem;
 }
 
 .site-header {
@@ -78,10 +80,13 @@ h3 {
 }
 
 .site-header-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1.25rem 0;
+  padding-inline: 1rem;
 }
 
 .site-nav-link {
@@ -98,7 +103,9 @@ h3 {
 }
 
 .site-footer-inner {
-  width: 100%;
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding-inline: 1rem;
 }
 
 .eyebrow {
@@ -113,6 +120,10 @@ h3 {
 .content-section {
   border-bottom: 1px solid var(--page-line);
   padding-bottom: 3rem;
+}
+
+.content-section {
+  margin-bottom: 3.5rem;
 }
 
 .hero-title {
@@ -166,6 +177,79 @@ h3 {
 
 .overview-link:hover .row-title {
   color: var(--page-accent);
+}
+
+.intro-shell {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.profile-title {
+  font-size: clamp(2.6rem, 5vw, 4.1rem);
+  line-height: 1.04;
+  text-align: center;
+}
+
+.profile-subtitle {
+  font-size: 1.05rem;
+}
+
+.list-shell {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.section-kicker {
+  font-size: 0.95rem;
+}
+
+.summary-panel {
+  border-top: 1px solid var(--page-line);
+  padding-top: 1.25rem;
+}
+
+.timeline-row {
+  border-top: 1px solid var(--page-line);
+  padding-top: 1.25rem;
+}
+
+.timeline-mark {
+  min-width: 36px;
+  height: 24px;
+  border-radius: 999px;
+  background: #e6eceb;
+  color: var(--page-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.timeline-link {
+  display: block;
+  color: inherit;
+}
+
+.timeline-arrow {
+  color: var(--page-accent);
+  font-size: 1.15rem;
+  transition: transform 150ms ease;
+}
+
+.timeline-link:hover .timeline-arrow {
+  transform: translateX(4px);
+}
+
+.timeline-link:hover .mantine-Text-root,
+.timeline-link:hover .mantine-Title-root {
+  color: inherit;
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.08;
 }
 
 @media (min-width: 75em) {

@@ -1,8 +1,8 @@
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";
 import {
+  Box,
   ColorSchemeScript,
-  Container,
   MantineProvider,
   createTheme,
   mantineHtmlProps,
@@ -13,11 +13,9 @@ import { Header } from "@/components/header";
 
 const theme = createTheme({
   primaryColor: "teal",
-  fontFamily:
-    '"Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, sans-serif',
+  fontFamily: "Roboto, sans-serif",
   headings: {
-    fontFamily:
-      '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", "URW Palladio L", serif',
+    fontFamily: "Roboto, sans-serif",
     fontWeight: "500",
   },
   colors: {
@@ -54,11 +52,11 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme} defaultColorScheme="light">
-          <Container size="lg" px="md" className="app-shell">
+          <Box className="app-shell">
             <Header />
             <main className="main-shell">{children}</main>
             <Footer />
-          </Container>
+          </Box>
         </MantineProvider>
       </body>
     </html>

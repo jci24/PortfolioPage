@@ -59,6 +59,24 @@ h3 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(10, 91, 102, 0.05), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(21, 34, 48, 0.04), transparent 24%),
+    radial-gradient(circle at 50% 80%, rgba(10, 91, 102, 0.035), transparent 22%),
+    linear-gradient(rgba(21, 34, 48, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 34, 48, 0.018) 1px, transparent 1px);
+  background-size: auto, auto, auto, 24px 24px, 24px 24px;
 }
 
 .main-shell {
@@ -208,6 +226,17 @@ h3 {
   padding-top: 1.25rem;
 }
 
+.interactive-panel {
+  position: relative;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.interactive-panel:hover {
+  transform: translateY(-1px);
+}
+
 .timeline-row {
   border-top: 1px solid var(--page-line);
   padding-top: 1.25rem;
@@ -269,9 +298,74 @@ h3 {
   color: inherit;
 }
 
+.blur-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  animation: blur-fade-in 780ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--blur-fade-delay, 0ms);
+  will-change: transform, opacity, filter;
+}
+
+.animated-list {
+  margin-top: 0.625rem;
+}
+
+.animated-list-item {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(8px);
+  animation: blur-fade-in 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--animated-list-delay, 0ms) + 120ms);
+  will-change: transform, opacity, filter;
+}
+
+.animated-list-item + .animated-list-item {
+  margin-top: 0.625rem;
+}
+
 .page-title {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   line-height: 1.08;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--page-line);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: #f3f7f6;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--page-accent);
+  color: white;
+  padding: 0.72rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.download-link:hover {
+  opacity: 0.92;
+}
+
+@keyframes blur-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 @media (min-width: 75em) {

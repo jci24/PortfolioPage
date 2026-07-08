@@ -4,12 +4,13 @@ This repository contains a recruiter-friendly portfolio website built in small, 
 
 ## Current scope
 
-This PR 1 foundation includes:
+Current implemented slices include:
 
 - Next.js App Router setup with TypeScript
 - Tailwind CSS configuration and global theme tokens
 - Base layout with header and footer
-- Homepage skeleton plus placeholder top-level routes
+- Data-driven homepage, About, and Projects content
+- CV download page and Contact page
 - Reusable section primitive for the editorial layout
 - Local setup instructions
 
@@ -61,9 +62,21 @@ app/
   globals.css
   layout.tsx
 components/
+  experience-row.tsx
   footer.tsx
   header.tsx
+  page-intro.tsx
+  project-row.tsx
   section.tsx
+data/
+  experience.ts
+  profile.ts
+  projects.ts
+  skills.ts
+  types.ts
+public/
+  Jaime_Castresana_CV.pdf
+  img/logos/
 ```
 
 ## Planned slices
@@ -74,6 +87,16 @@ components/
 - PR 5: mock AI assistant using local profile knowledge
 - PR 6: tests and polish
 - PR 7: real LLM integration
+
+## CV asset
+
+The current CV button points to:
+
+```text
+public/Jaime_Castresana_CV.pdf
+```
+
+Replace that file with the final exported CV PDF when ready.
 
 ## Deployment
 

@@ -3,13 +3,11 @@ import { Children, type CSSProperties, type ReactNode } from "react";
 type AnimatedListProps = {
   children: ReactNode;
   className?: string;
-  staggerMs?: number;
 };
 
 export function AnimatedList({
   children,
   className,
-  staggerMs = 90,
 }: AnimatedListProps) {
   const items = Children.toArray(children);
 
@@ -17,11 +15,11 @@ export function AnimatedList({
     <div className={`animated-list${className ? ` ${className}` : ""}`}>
       {items.map((child, index) => {
         const style = {
-          "--animated-list-delay": `${index * staggerMs}ms`,
+          "--animated-list-delay": `${index * 28}ms`,
         } as CSSProperties;
 
         return (
-          <div className="animated-list-item" key={index} style={style}>
+          <div className="animated-list-item" key={`animated-list-item-${index}`} style={style}>
             {child}
           </div>
         );

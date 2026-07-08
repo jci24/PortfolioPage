@@ -3,12 +3,11 @@ import type { CSSProperties, ReactNode } from "react";
 type BlurFadeProps = {
   children: ReactNode;
   className?: string;
-  delay?: number;
 };
 
-export function BlurFade({ children, className, delay = 0 }: BlurFadeProps) {
+export function BlurFade({ children, className }: BlurFadeProps) {
   const style = {
-    "--blur-fade-delay": `${delay}ms`,
+    "--blur-fade-delay": "0ms",
   } as CSSProperties;
 
   return (

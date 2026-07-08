@@ -29,6 +29,7 @@ export type ExperienceItem = {
   title: string;
   subtitle?: string;
   period: string;
+  dateLabel?: string;
   group: "latest" | "earlier";
   summary: string;
   bullets: string[];

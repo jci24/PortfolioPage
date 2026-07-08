@@ -1,11 +1,4 @@
 import Link from "next/link";
-import {
-  Anchor,
-  Group,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
 import { AnimatedList } from "@/components/animated-list";
 import { BlurFade } from "@/components/blur-fade";
 import { ExperienceRow } from "@/components/experience-row";
@@ -20,31 +13,25 @@ const earlierProjectPreview = projects.slice(0, 3);
 
 export default function Home() {
   return (
-    <Stack gap={64}>
-      <BlurFade delay={40}>
+    <div className="page-stack">
+      <BlurFade>
         <section className="intro-shell">
-          <Stack align="center" gap={8}>
-            <Title order={1} className="profile-title">
-              {profile.name}
-            </Title>
-            <Text c="dimmed" className="profile-subtitle" ta="center">
-              {profile.headline}
-            </Text>
-          </Stack>
+          <div className="intro-stack intro-center">
+            <h1 className="profile-title">{profile.name}</h1>
+            <p className="profile-subtitle">{profile.headline}</p>
+          </div>
         </section>
       </BlurFade>
 
-      <BlurFade delay={110}>
+      <BlurFade>
         <section className="list-shell">
-          <Stack gap={28}>
+          <div className="section-stack-large">
             <div>
-              <Text c="dimmed" className="section-kicker">
-                Latest
-              </Text>
+              <p className="section-kicker">Latest</p>
               <AnimatedList className="list-cluster">
                 {latestExperience.map((item) => (
                   <ExperienceRow
-                    href={`/about#${item.slug}`}
+                    href={`/work/${item.slug}`}
                     item={item}
                     key={item.slug}
                   />
@@ -53,67 +40,59 @@ export default function Home() {
             </div>
 
             <div>
-              <Text c="dimmed" className="section-kicker">
-                Earlier
-              </Text>
-              <AnimatedList className="list-cluster" staggerMs={110}>
+              <p className="section-kicker">Earlier</p>
+              <AnimatedList className="list-cluster">
                 {earlierExperience.map((item) => (
                   <ExperienceRow
-                    href={`/about#${item.slug}`}
+                    href={`/work/${item.slug}`}
                     item={item}
                     key={item.slug}
                   />
                 ))}
               </AnimatedList>
             </div>
-          </Stack>
+          </div>
         </section>
       </BlurFade>
 
-      <BlurFade delay={180}>
+      <BlurFade>
         <section className="list-shell">
-          <Stack gap={10}>
-            <Group justify="space-between" align="end">
-              <Text c="dimmed" className="section-kicker">
-                Profile
-              </Text>
-              <Anchor component={Link} href="/about" size="sm" underline="hover">
+          <div className="section-stack">
+            <div className="section-heading-row">
+              <p className="section-kicker">Profile</p>
+              <Link className="section-link" href="/about">
                 Full profile
-              </Anchor>
-            </Group>
-            <div className="summary-panel interactive-panel">
-              <Text size="sm">{profile.summary}</Text>
-              <Text c="dimmed" mt="sm" size="sm">
-                {profile.detail}
-              </Text>
+              </Link>
             </div>
-          </Stack>
+            <div className="summary-panel interactive-panel">
+              <p className="detail-body">{profile.summary}</p>
+              <p className="detail-muted detail-spacing-top">{profile.detail}</p>
+            </div>
+          </div>
         </section>
       </BlurFade>
 
-      <BlurFade delay={250}>
+      <BlurFade>
         <section className="list-shell">
-          <Stack gap={10}>
-            <Group justify="space-between" align="end">
-              <Text c="dimmed" className="section-kicker">
-                Selected projects
-              </Text>
-              <Anchor component={Link} href="/projects" size="sm" underline="hover">
+          <div className="section-stack">
+            <div className="section-heading-row">
+              <p className="section-kicker">Selected projects</p>
+              <Link className="section-link" href="/projects">
                 All projects
-              </Anchor>
-            </Group>
-            <AnimatedList className="list-cluster" staggerMs={100}>
+              </Link>
+            </div>
+            <AnimatedList className="list-cluster">
               {earlierProjectPreview.map((item) => (
                 <ProjectRow
-                  href={`/projects#${item.slug}`}
+                  href={`/projects/${item.slug}`}
                   item={item}
                   key={item.slug}
                 />
               ))}
             </AnimatedList>
-          </Stack>
+          </div>
         </section>
       </BlurFade>
-    </Stack>
+    </div>
   );
 }

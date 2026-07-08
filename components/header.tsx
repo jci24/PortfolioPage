@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Anchor, Group, Stack, Text } from "@mantine/core";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -14,31 +13,23 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Stack gap={2}>
-          <Text className="eyebrow" span>
+        <div className="site-brand">
+          <span className="eyebrow">
             Jaime Castresana Iza
-          </Text>
-          <Text c="dimmed" size="sm">
+          </span>
+          <p className="site-tagline">
             Software Engineer | Audio, DSP Tools & AI Product Development
-          </Text>
-        </Stack>
+          </p>
+        </div>
 
         <nav aria-label="Primary" className="site-nav">
-          <Group gap="lg">
+          <div className="site-nav-list">
             {navigationItems.map((item) => (
-              <Anchor
-                c="dimmed"
-                component={Link}
-                href={item.href}
-                key={item.label}
-                size="sm"
-                underline="never"
-                className="site-nav-link"
-              >
+              <Link className="site-nav-link" href={item.href} key={item.label}>
                 {item.label}
-              </Anchor>
+              </Link>
             ))}
-          </Group>
+          </div>
         </nav>
       </div>
     </header>

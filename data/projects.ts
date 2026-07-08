@@ -52,3 +52,7 @@ export const projects: ProjectItem[] = [
     ],
   },
 ];
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((item) => item.slug === slug);
+}

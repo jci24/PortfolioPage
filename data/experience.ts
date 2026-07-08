@@ -11,6 +11,7 @@ export const experience: ExperienceItem[] = [
     logoBoxWidth: 96,
     title: "Software Engineer",
     period: "Recent",
+    dateLabel: "Recent",
     group: "latest",
     summary:
       "Commercial acoustic engineering software for Transfer Path Analysis and noise-emission modelling workflows.",
@@ -40,6 +41,7 @@ export const experience: ExperienceItem[] = [
     logoBoxWidth: 64,
     title: "R&D Software Assistant",
     period: "Earlier",
+    dateLabel: "Earlier",
     group: "earlier",
     summary:
       "Audio amplifier R&D, testing, and embedded audio processing work in a product-focused setting.",
@@ -51,3 +53,7 @@ export const experience: ExperienceItem[] = [
     stack: ["Embedded audio", "DSP", "ARM Cortex-M7", "Testing", "Networking"],
   },
 ];
+
+export function getExperienceBySlug(slug: string) {
+  return experience.find((item) => item.slug === slug);
+}

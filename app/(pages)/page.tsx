@@ -230,8 +230,17 @@ export default function Home() {
           {projects.slice(0, 3).map((project, index) => (
             <article className="figma-card figma-project-card" key={project.slug}>
               <div className={`figma-project-visual figma-project-${index + 1}`}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <i aria-hidden="true" />
+                <Image
+                  alt={project.imageAlt}
+                  className="figma-project-image"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  src={project.imageSrc}
+                />
+                <span className="figma-project-shade" aria-hidden="true" />
+                <span className="figma-project-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
               <div className="figma-project-body">
                 <span className="project-classification">

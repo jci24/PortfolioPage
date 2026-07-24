@@ -1,26 +1,33 @@
+"use client";
+
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { profile } from "@/data/profile";
 
 const navigationItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/projects" },
-  { label: "CV", href: "/cv" },
-  { label: "Contact", href: "/contact" },
-  { label: "Assistant", href: "/chat" },
+  { label: "CV", href: "/Jaime_Castresana_CV.pdf" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <div className="site-brand">
-          <span className="eyebrow">
-            Jaime Castresana Iza
-          </span>
-          <p className="site-tagline">
-            Software Engineer | Audio, DSP Tools & AI Product Development
-          </p>
-        </div>
+        <Link
+          aria-label="Jaime Castresana Iza, home"
+          className="site-brand"
+          href="/"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <strong>Jaime Castresana Iza</strong>
+        </Link>
 
         <nav aria-label="Primary" className="site-nav">
           <div className="site-nav-list">
@@ -29,9 +36,50 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              className="site-nav-link"
+              href={profile.bookingUrl}
+            >
+              Book a call
+            </Link>
+            <ThemeToggle />
+            <button
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+              className="site-menu-toggle"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              type="button"
+            >
+              {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            </button>
           </div>
         </nav>
       </div>
+
+      {mobileMenuOpen ? (
+        <nav
+          aria-label="Mobile"
+          className="site-mobile-menu"
+          id="mobile-navigation"
+        >
+          {navigationItems.map((item) => (
+            <Link
+              href={item.href}
+              key={item.label}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href={profile.bookingUrl}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Book a call
+          </Link>
+        </nav>
+      ) : null}
     </header>
   );
 }

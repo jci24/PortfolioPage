@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, MapPin } from "lucide-react";
 import type { ExperienceItem } from "@/data/types";
+import { profile } from "@/data/profile";
 
 type WorkPageProps = {
   item: ExperienceItem;
@@ -8,64 +10,94 @@ type WorkPageProps = {
 
 export function WorkPage({ item }: WorkPageProps) {
   return (
-    <div className="work-page-shell">
-      <Link className="detail-back-link" href="/">
-        Home
-      </Link>
+    <article className="experience-detail-page">
+      <header className="experience-detail-hero">
+        <div className="experience-detail-hero-inner">
+          <Link className="projects-back-link" href="/#experience">
+            <ArrowLeft aria-hidden="true" />
+            Experience overview
+          </Link>
 
-      <div className="work-page-header">
-        <div className="work-page-logo-wrap">
-          {item.logoSrc ? (
-            <div
-              className={`work-page-logo${item.logoDark ? " work-page-logo-dark" : ""}`}
-              style={{
-                width: item.logoBoxWidth ? item.logoBoxWidth + 18 : 108,
-              }}
-            >
-              <Image
-                alt={`${item.company} logo`}
-                className="work-page-logo-image"
-                height={item.logoHeight ? item.logoHeight + 8 : 36}
-                src={item.logoSrc}
-                width={item.logoWidth ? item.logoWidth + 18 : 96}
-              />
+          <div className="experience-detail-heading">
+            {item.logoSrc ? (
+              <div
+                className={`experience-detail-logo${item.logoDark ? " experience-detail-logo-dark" : ""}`}
+              >
+                <Image
+                  alt={`${item.company} logo`}
+                  height={item.logoHeight ?? 40}
+                  src={item.logoSrc}
+                  width={item.logoWidth ?? 120}
+                />
+              </div>
+            ) : null}
+            <div>
+              <span className="figma-status-badge">
+                <MapPin aria-hidden="true" />
+                {profile.location}
+              </span>
+              <h1>{item.title}</h1>
+              <p className="experience-detail-company">{item.company}</p>
+              <p className="experience-detail-period">{item.period}</p>
             </div>
-          ) : null}
+          </div>
+          <p className="experience-detail-summary">{item.summary}</p>
         </div>
+      </header>
 
-        <div className="work-page-heading">
-          <h1 className="work-page-title">{item.company}</h1>
-          <p className="work-page-subtitle">
-            {item.title}
-            {item.subtitle ? ` · ${item.subtitle}` : ""}
+      <div className="experience-detail-content">
+        <section className="experience-contribution-section">
+          <div>
+            <span>Contribution</span>
+            <h2>What I worked on</h2>
+          </div>
+          <div className="case-study-list">
+            {item.bullets.map((bullet) => (
+              <p key={bullet}>
+                <CheckCircle2 aria-hidden="true" />
+                {bullet}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section className="experience-stack-section">
+          <div>
+            <span>Toolkit</span>
+            <h2>Technologies and domains</h2>
+          </div>
+          <div className="figma-chip-list">
+            {item.stack.map((entry) => (
+              <span key={entry}>{entry}</span>
+            ))}
+          </div>
+        </section>
+
+        <aside className="case-study-note">
+          <strong>Employment timeline</strong>
+          <p>
+            {item.period}. Additional employment and education details are
+            available in the downloadable CV.
           </p>
-          <p className="work-page-period">{item.dateLabel ?? item.period}</p>
-        </div>
-      </div>
+        </aside>
 
-      <div className="work-page-summary">
-        <p>{item.summary}</p>
-      </div>
-
-      <div className="work-page-section">
-        <div className="detail-stack">
-          {item.bullets.map((bullet) => (
-            <p className="detail-muted" key={bullet}>
-              {bullet}
+        <section className="case-study-next">
+          <div>
+            <h2>Want to discuss this experience?</h2>
+            <p>
+              I can provide more detail about responsibilities, collaboration,
+              and technical decisions where confidentiality allows.
             </p>
-          ))}
-        </div>
+          </div>
+          <a
+            className="figma-button figma-button-primary"
+            href={profile.bookingUrl}
+          >
+            Book a conversation
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+        </section>
       </div>
-
-      <div className="work-page-section">
-        <div className="pill-group">
-          {item.stack.map((entry) => (
-            <span className="detail-pill" key={entry}>
-              {entry}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }

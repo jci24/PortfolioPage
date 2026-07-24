@@ -6,6 +6,10 @@ const projectItems: ProjectItem[] = [
     name: "SoundLens - AI-assisted acoustic investigation",
     classification: "Personal project",
     repositoryUrl: "https://github.com/jci24/SoundLens",
+    imageSrc: "/img/projects/soundlens.jpg",
+    imageAlt:
+      "Abstract green audio waveform against a black background, used as illustrative photography",
+    imageCredit: "Logan Voss / Unsplash",
     summary:
       "A C#/.NET and React platform for comparing recordings and inspecting waveform, spectrum, and signal metrics.",
     context:
@@ -33,6 +37,10 @@ const projectItems: ProjectItem[] = [
     slug: "sound-quality-poc",
     name: "Sound Quality POC",
     classification: "Commercial proof of concept",
+    imageSrc: "/img/projects/sound-quality.jpg",
+    imageAlt:
+      "Colourful data visualisation objects on a dark surface, used as illustrative photography",
+    imageCredit: "Deng Xiang / Unsplash",
     summary:
       "A commercial proof of concept for comparing sounds using psychoacoustic metrics.",
     context:
@@ -65,6 +73,10 @@ const projectItems: ProjectItem[] = [
     slug: "digital-crossovers-arm",
     name: "Digital audio crossovers on ARM Cortex-M7",
     classification: "MSc thesis",
+    imageSrc: "/img/projects/digital-crossovers.jpg",
+    imageAlt:
+      "Black-and-white collection of loudspeakers and audio equipment, used as illustrative photography",
+    imageCredit: "John de Jong / Unsplash",
     period: "MSc thesis",
     summary:
       "An MSc thesis implementing and evaluating loudspeaker crossover processing on an ARM Cortex-M7.",
@@ -93,6 +105,10 @@ const projectItems: ProjectItem[] = [
     slug: "acoustic-engineering-software",
     name: "Acoustic engineering software for TPA and noise-emission modelling",
     classification: "Professional work",
+    imageSrc: "/img/projects/acoustic-software.jpg",
+    imageAlt:
+      "Vehicle inside an illuminated engineering inspection chamber, used as illustrative photography",
+    imageCredit: "KJ Brix / Unsplash",
     summary:
       "Full-stack commercial software for acoustic analysis, model comparison, and validation.",
     context:

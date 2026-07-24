@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowUpRight, Layers3 } from "lucide-react";
 import { profile } from "@/data/profile";
@@ -45,8 +46,17 @@ export default function ProjectsPage() {
               <div
                 className={`figma-project-visual figma-project-${(index % 3) + 1}`}
               >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <i aria-hidden="true" />
+                <Image
+                  alt={project.imageAlt}
+                  className="figma-project-image"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 35vw"
+                  src={project.imageSrc}
+                />
+                <span className="figma-project-shade" aria-hidden="true" />
+                <span className="figma-project-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <strong>{project.classification}</strong>
               </div>
               <div className="figma-project-body">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, Github } from "lucide-react";
 import type { ProjectItem } from "@/data/types";
 import { profile } from "@/data/profile";
@@ -69,6 +70,21 @@ export function ProjectPage({ item }: ProjectPageProps) {
       </header>
 
       <div className="case-study-content">
+        <figure className="case-study-image">
+          <div>
+            <Image
+              alt={item.imageAlt}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1120px"
+              src={item.imageSrc}
+            />
+          </div>
+          <figcaption>
+            Illustrative photography · {item.imageCredit}
+          </figcaption>
+        </figure>
+
         <section className="case-study-context">
           <span>Context</span>
           <h2>The problem</h2>

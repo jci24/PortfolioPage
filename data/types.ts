@@ -44,6 +44,9 @@ export type ProjectItem = {
   name: string;
   classification: string;
   repositoryUrl?: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageCredit: string;
   period?: string;
   summary: string;
   context: string;

@@ -2865,25 +2865,31 @@ body {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.figma-project-visual > span {
+.figma-project-number {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 1rem;
   left: 1rem;
   font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-.figma-project-visual > i {
+.figma-project-image {
   position: absolute;
-  width: 12rem;
-  height: 12rem;
-  right: -2rem;
-  bottom: -4rem;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 35px rgba(255, 255, 255, 0.05),
-    0 0 0 70px rgba(255, 255, 255, 0.035);
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.figma-project-card:hover .figma-project-image {
+  transform: scale(1.025);
+}
+
+.figma-project-shade {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 15, 17, 0.58), transparent 42%),
+    linear-gradient(0deg, rgba(7, 15, 17, 0.58), transparent 45%);
 }
 
 .figma-project-2 {
@@ -3307,7 +3313,7 @@ body {
 
 .projects-index-card .figma-project-visual > strong {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   right: 1rem;
   bottom: 1rem;
   left: 1rem;
@@ -3793,4 +3799,38 @@ body {
 .case-study-repository {
   width: fit-content;
   margin-top: 1.25rem;
+}
+
+.case-study-image {
+  margin: 0;
+}
+
+.case-study-image > div {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border: 1px solid var(--figma-border);
+  border-radius: 24px;
+  background: #101416;
+}
+
+.case-study-image img {
+  object-fit: cover;
+}
+
+.case-study-image figcaption {
+  margin-top: 0.7rem;
+  color: var(--figma-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.035em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+@media (max-width: 48em) {
+  .case-study-image > div {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+  }
 }

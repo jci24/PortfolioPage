@@ -205,6 +205,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="figma-experience-meta">
+                <span>{item.dateLabel}</span>
                 <span>⌖ {profile.location}</span>
               </div>
               <p className="figma-card-copy">{item.summary}</p>

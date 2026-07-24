@@ -24,6 +24,9 @@ export async function generateMetadata({
   return {
     title: `${item.name} | Jaime Castresana Iza`,
     description: item.summary,
+    alternates: {
+      canonical: `/projects/${item.slug}`,
+    },
   };
 }
 

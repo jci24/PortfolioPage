@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Grid, GridCol, Stack, Text, Title } from "@mantine/core";
 
 type SectionProps = {
   eyebrow: string;
@@ -10,27 +9,15 @@ type SectionProps = {
 
 export function Section({ eyebrow, title, children, aside }: SectionProps) {
   return (
-    <Grid className="content-section" gap="xl">
-      <GridCol span={{ base: 12, lg: 3 }}>
-        <Stack gap={6}>
-          <Text className="eyebrow" span>
-            {eyebrow}
-          </Text>
-          {aside ? (
-            <Text c="dimmed" size="sm">
-              {aside}
-            </Text>
-          ) : null}
-        </Stack>
-      </GridCol>
-      <GridCol span={{ base: 12, lg: 9 }}>
-        <Stack gap="sm">
-          <Title order={2} className="section-title">
-            {title}
-          </Title>
-          <div>{children}</div>
-        </Stack>
-      </GridCol>
-    </Grid>
+    <section className="content-section">
+      <div className="content-section-meta">
+        <span className="eyebrow">{eyebrow}</span>
+        {aside ? <p className="section-aside">{aside}</p> : null}
+      </div>
+      <div className="content-section-body">
+        <h2 className="section-title">{title}</h2>
+        <div>{children}</div>
+      </div>
+    </section>
   );
 }

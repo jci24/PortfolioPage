@@ -10,7 +10,8 @@ export const experience: ExperienceItem[] = [
     logoHeight: 30,
     logoBoxWidth: 96,
     title: "Software Engineer",
-    period: "Recent",
+    period: "September 2023 - Present",
+    dateLabel: "Sep 2023 - Present",
     group: "latest",
     summary:
       "Commercial acoustic engineering software for Transfer Path Analysis and noise-emission modelling workflows.",
@@ -39,7 +40,8 @@ export const experience: ExperienceItem[] = [
     logoHeight: 32,
     logoBoxWidth: 64,
     title: "R&D Software Assistant",
-    period: "Earlier",
+    period: "May 2022 - June 2023",
+    dateLabel: "May 2022 - Jun 2023",
     group: "earlier",
     summary:
       "Audio amplifier R&D, testing, and embedded audio processing work in a product-focused setting.",
@@ -51,3 +53,7 @@ export const experience: ExperienceItem[] = [
     stack: ["Embedded audio", "DSP", "ARM Cortex-M7", "Testing", "Networking"],
   },
 ];
+
+export function getExperienceBySlug(slug: string) {
+  return experience.find((item) => item.slug === slug);
+}

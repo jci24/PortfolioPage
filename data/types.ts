@@ -9,6 +9,9 @@ export type Profile = {
   headline: string;
   summary: string;
   detail: string;
+  bookingUrl: string;
+  bookingEmbedUrl: string;
+  bookingExternalUrl: string;
   targetRoles: string[];
   education: Array<{
     degree: string;
@@ -29,6 +32,7 @@ export type ExperienceItem = {
   title: string;
   subtitle?: string;
   period: string;
+  dateLabel?: string;
   group: "latest" | "earlier";
   summary: string;
   bullets: string[];
@@ -38,8 +42,14 @@ export type ExperienceItem = {
 export type ProjectItem = {
   slug: string;
   name: string;
+  classification: string;
+  repositoryUrl?: string;
   period?: string;
   summary: string;
+  context: string;
+  contribution: string[];
+  approach: string[];
+  validation: string[];
+  scopeNote?: string;
   tags: string[];
-  details: string[];
 };

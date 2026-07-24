@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Anchor, Grid, GridCol, Group, Stack, Text } from "@mantine/core";
 import type { ExperienceItem } from "@/data/types";
 
 type ExperienceRowProps = {
@@ -10,9 +9,9 @@ type ExperienceRowProps = {
 
 export function ExperienceRow({ item, href }: ExperienceRowProps) {
   const content = (
-    <Grid className="timeline-row" gap="lg">
-      <GridCol span={{ base: 12, md: 2.5 }}>
-        <Group gap="sm" wrap="nowrap">
+    <div className="timeline-row timeline-grid">
+      <div className="timeline-col timeline-col-company">
+        <div className="timeline-company-group">
           {item.logoSrc ? (
             <div
               className={`timeline-logo${item.logoDark ? " timeline-logo-dark" : ""}`}
@@ -31,41 +30,29 @@ export function ExperienceRow({ item, href }: ExperienceRowProps) {
           ) : (
             <div className="timeline-mark">{item.label}</div>
           )}
-          <Text fw={500} size="sm">
-            {item.company}
-          </Text>
-        </Group>
-      </GridCol>
-      <GridCol span={{ base: 12, md: 7 }}>
-        <Stack gap={2}>
-          <Group justify="space-between" gap="sm" wrap="nowrap" align="flex-start">
+          <p className="timeline-company-name">{item.company}</p>
+        </div>
+      </div>
+      <div className="timeline-col timeline-col-main">
+        <div className="timeline-main-stack">
+          <div className="timeline-headline-row">
             <div>
-              <Text fw={600} size="sm">
-                {item.title}
-              </Text>
+              <p className="timeline-title">{item.title}</p>
               {item.subtitle ? (
-                <Text c="dimmed" size="sm">
-                  {item.subtitle}
-                </Text>
+                <p className="timeline-subtitle">{item.subtitle}</p>
               ) : null}
             </div>
             {href ? (
-              <Text className="timeline-arrow" span>
-                →
-              </Text>
+              <span className="timeline-arrow">→</span>
             ) : null}
-          </Group>
-          <Text c="dimmed" size="sm">
-            {item.summary}
-          </Text>
-        </Stack>
-      </GridCol>
-      <GridCol span={{ base: 12, md: 2.5 }}>
-        <Text c="dimmed" ta={{ base: "left", md: "right" }} size="sm">
-          {item.period}
-        </Text>
-      </GridCol>
-    </Grid>
+          </div>
+          <p className="timeline-summary">{item.summary}</p>
+        </div>
+      </div>
+      <div className="timeline-col timeline-col-period">
+        <p className="timeline-period">{item.period}</p>
+      </div>
+    </div>
   );
 
   if (!href) {
@@ -73,13 +60,8 @@ export function ExperienceRow({ item, href }: ExperienceRowProps) {
   }
 
   return (
-    <Anchor
-      component={Link}
-      href={href}
-      underline="never"
-      className="timeline-link"
-    >
+    <Link className="timeline-link" href={href}>
       {content}
-    </Anchor>
+    </Link>
   );
 }

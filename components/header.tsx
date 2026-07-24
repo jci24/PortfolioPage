@@ -1,46 +1,85 @@
+"use client";
+
 import Link from "next/link";
-import { Anchor, Group, Stack, Text } from "@mantine/core";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { profile } from "@/data/profile";
 
 const navigationItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/projects" },
-  { label: "CV", href: "/cv" },
-  { label: "Contact", href: "/contact" },
-  { label: "Assistant", href: "/chat" },
+  { label: "CV", href: "/Jaime_Castresana_CV.pdf" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Stack gap={2}>
-          <Text className="eyebrow" span>
-            Jaime Castresana Iza
-          </Text>
-          <Text c="dimmed" size="sm">
-            Software Engineer | Audio, DSP Tools & AI Product Development
-          </Text>
-        </Stack>
+        <Link
+          aria-label="Jaime Castresana Iza, home"
+          className="site-brand"
+          href="/"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <strong>Jaime Castresana Iza</strong>
+        </Link>
 
         <nav aria-label="Primary" className="site-nav">
-          <Group gap="lg">
+          <div className="site-nav-list">
             {navigationItems.map((item) => (
-              <Anchor
-                c="dimmed"
-                component={Link}
-                href={item.href}
-                key={item.label}
-                size="sm"
-                underline="never"
-                className="site-nav-link"
-              >
+              <Link className="site-nav-link" href={item.href} key={item.label}>
                 {item.label}
-              </Anchor>
+              </Link>
             ))}
-          </Group>
+            <Link
+              className="site-nav-link"
+              href={profile.bookingUrl}
+            >
+              Book a call
+            </Link>
+            <ThemeToggle />
+            <button
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+              className="site-menu-toggle"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              type="button"
+            >
+              {mobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            </button>
+          </div>
         </nav>
       </div>
+
+      {mobileMenuOpen ? (
+        <nav
+          aria-label="Mobile"
+          className="site-mobile-menu"
+          id="mobile-navigation"
+        >
+          {navigationItems.map((item) => (
+            <Link
+              href={item.href}
+              key={item.label}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href={profile.bookingUrl}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Book a call
+          </Link>
+        </nav>
+      ) : null}
     </header>
   );
 }

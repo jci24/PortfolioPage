@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Anchor, Grid, GridCol, Group, Text } from "@mantine/core";
 import type { ProjectItem } from "@/data/types";
 
 type ProjectRowProps = {
@@ -9,32 +8,24 @@ type ProjectRowProps = {
 
 export function ProjectRow({ item, href }: ProjectRowProps) {
   const content = (
-    <Grid className="timeline-row" gap="lg">
-      <GridCol span={{ base: 12, md: 3 }}>
-        <Text fw={500} size="sm">
-          {item.name}
-        </Text>
-      </GridCol>
-      <GridCol span={{ base: 12, md: 7 }}>
-        <Text c="dimmed" size="sm">
-          {item.summary}
-        </Text>
-      </GridCol>
-      <GridCol span={{ base: 12, md: 2 }}>
-        <Group justify="flex-end" gap="xs" wrap="nowrap">
+    <div className="timeline-row project-grid">
+      <div className="timeline-col project-col-title">
+        <p className="timeline-company-name">{item.name}</p>
+      </div>
+      <div className="timeline-col project-col-summary">
+        <p className="timeline-summary">{item.summary}</p>
+      </div>
+      <div className="timeline-col project-col-period">
+        <div className="project-period-group">
           {item.period ? (
-            <Text c="dimmed" size="sm">
-              {item.period}
-            </Text>
+            <p className="timeline-period">{item.period}</p>
           ) : null}
           {href ? (
-            <Text className="timeline-arrow" span>
-              →
-            </Text>
+            <span className="timeline-arrow">→</span>
           ) : null}
-        </Group>
-      </GridCol>
-    </Grid>
+        </div>
+      </div>
+    </div>
   );
 
   if (!href) {
@@ -42,13 +33,8 @@ export function ProjectRow({ item, href }: ProjectRowProps) {
   }
 
   return (
-    <Anchor
-      component={Link}
-      href={href}
-      underline="never"
-      className="timeline-link"
-    >
+    <Link className="timeline-link" href={href}>
       {content}
-    </Anchor>
+    </Link>
   );
 }

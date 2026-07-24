@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Book a conversation | Jaime Castresana Iza",
   description:
     "Choose a convenient time for a short conversation with software engineer Jaime Castresana Iza.",
+  alternates: {
+    canonical: "/book",
+  },
 };
 
 const meetingDetails = [

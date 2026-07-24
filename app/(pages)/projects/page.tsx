@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Projects | Jaime Castresana Iza",
   description:
     "Selected software engineering projects across audio analysis, acoustic workflows, embedded DSP, and technical product development.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function ProjectsPage() {

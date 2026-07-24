@@ -2875,11 +2875,15 @@ body {
 
 .figma-project-image {
   position: absolute;
+  filter: saturate(0.68) contrast(1.06);
   object-fit: cover;
-  transition: transform 500ms ease;
+  transition:
+    filter 300ms ease,
+    transform 500ms ease;
 }
 
 .figma-project-card:hover .figma-project-image {
+  filter: saturate(0.82) contrast(1.08);
   transform: scale(1.025);
 }
 
@@ -2888,8 +2892,9 @@ body {
   z-index: 2;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(7, 15, 17, 0.58), transparent 42%),
-    linear-gradient(0deg, rgba(7, 15, 17, 0.58), transparent 45%);
+    linear-gradient(180deg, rgba(7, 15, 17, 0.6), transparent 42%),
+    linear-gradient(0deg, rgba(7, 15, 17, 0.62), transparent 48%),
+    rgba(10, 91, 102, 0.1);
 }
 
 .figma-project-2 {
@@ -3816,6 +3821,7 @@ body {
 }
 
 .case-study-image img {
+  filter: saturate(0.72) contrast(1.04);
   object-fit: cover;
 }
 

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "HBK Experience | Jaime Castresana Iza",
   description:
     "Software engineering work on commercial acoustic software and specialist technical workflows at HBK.",
+  alternates: {
+    canonical: "/work/hbk",
+  },
 };
 
 export default function HbkWorkPage() {

@@ -15,13 +15,8 @@ import { projects } from "@/data/projects";
 const skillCategories = [
   {
     icon: "</>",
-    title: "Software engineering",
-    skills: ["C#/.NET", "React", "TypeScript", "Python"],
-  },
-  {
-    icon: "◫",
-    title: "Product development",
-    skills: ["APIs", "Technical UX", "Testing", "Documentation"],
+    title: "Software",
+    skills: ["C# / .NET", "React", "TypeScript", "Python", "APIs", "Testing"],
   },
   {
     icon: "⌁",
@@ -34,24 +29,16 @@ const skillCategories = [
     ],
   },
   {
-    icon: "↗",
-    title: "Delivery",
-    skills: ["Git", "Azure DevOps", "CI/CD", "Agile collaboration"],
-  },
-  {
     icon: "✦",
-    title: "AI engineering",
+    title: "AI & product",
     skills: [
       "LLM tool calling",
       "Evidence-grounded workflows",
       "Agent orchestration",
       "Automated evaluation",
+      "Technical UX",
+      "Product development",
     ],
-  },
-  {
-    icon: "◎",
-    title: "Engineering domains",
-    skills: ["Audio software", "Acoustic tools", "Embedded DSP"],
   },
 ];
 
@@ -80,10 +67,10 @@ export default function Home() {
             </span>
 
             <div>
-              <h1>I build software that helps engineers understand and improve sound.</h1>
+              <h1>Engineering better ways to understand sound.</h1>
               <p className="figma-hero-role">
-                Audio-focused software engineer working across
-                <em> commercial acoustic applications, embedded DSP, and AI-assisted workflows.</em>
+                Audio software, DSP tools, and AI-assisted engineering products
+                for technical users.
               </p>
               <p className="figma-hero-summary">{profile.detail}</p>
             </div>
@@ -148,8 +135,8 @@ export default function Home() {
         </div>
 
         <a className="figma-scroll-indicator" href="#skills">
-          <span>Scroll to explore</span>
           <strong aria-hidden="true">↓</strong>
+          <span>Explore</span>
         </a>
       </section>
 
@@ -189,7 +176,7 @@ export default function Home() {
         <div className="figma-experience-list">
           {experience.map((item) => (
             <Link
-              className="figma-card figma-experience-card"
+              className="figma-experience-card"
               href={`/work/${item.slug}`}
               key={item.slug}
             >
@@ -279,45 +266,29 @@ export default function Home() {
       </section>
 
       <section className="figma-section" id="contact">
-        <div className="figma-section-heading">
-          <h2>Let&apos;s Work Together</h2>
-          <p>
-            Have a role or product where software engineering meets audio,
-            acoustics, DSP, or technical-user workflows? I&apos;d like to hear
-            about it.
-          </p>
-        </div>
         <div className="figma-contact-simple">
-          <div className="figma-contact-cards">
-            <a
-              className="figma-card figma-contact-card"
-              href="mailto:jaime.castresana@gmail.com"
-            >
-              <span className="figma-card-icon" aria-hidden="true">
-                @
-              </span>
-              <span>
-                <strong>Email</strong>
-                <small>jaime.castresana@gmail.com</small>
-              </span>
-            </a>
-            <div className="figma-card figma-contact-card">
-              <span className="figma-card-icon" aria-hidden="true">
-                ⌖
-              </span>
-              <span>
-                <strong>Location</strong>
-                <small>{profile.location}</small>
-              </span>
-            </div>
-          </div>
-          <div className="figma-contact-action">
+          <div>
+            <span className="figma-contact-kicker">Get in touch</span>
+            <h2>Let&apos;s build better audio products.</h2>
             <p>
-              Choose an available time for a short introductory conversation,
-              or use email if you prefer an asynchronous introduction.
+              Based in {profile.location}. Open to thoughtful conversations
+              about audio software, DSP tools, and AI-assisted engineering.
             </p>
+          </div>
+          <div className="figma-contact-links">
+            {profile.socialLinks.map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+              >
+                {link.label}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            ))}
             <a
-              className="figma-button figma-button-primary"
+              className="figma-contact-booking"
               href={profile.bookingUrl}
             >
               Book a conversation

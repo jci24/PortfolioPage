@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profile } from "@/data/profile";
 
 const navigationItems = [
   { label: "Skills", href: "/#skills" },
@@ -36,12 +35,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              className="site-nav-link"
-              href={profile.bookingUrl}
-            >
-              Book a call
-            </Link>
             <ThemeToggle />
             <button
               aria-expanded={mobileMenuOpen}
@@ -72,12 +65,6 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href={profile.bookingUrl}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Book a call
-          </Link>
         </nav>
       ) : null}
     </header>

@@ -25,8 +25,13 @@ const skillCategories = [
   },
   {
     icon: "⌁",
-    title: "Audio & acoustics",
-    skills: ["DSP foundations", "FFT & spectra", "Sound quality", "Validation"],
+    title: "Audio & DSP",
+    skills: [
+      "Acoustic analysis",
+      "Frequency-domain workflows",
+      "Psychoacoustic metrics",
+      "Embedded DSP implementation",
+    ],
   },
   {
     icon: "↗",
@@ -35,8 +40,13 @@ const skillCategories = [
   },
   {
     icon: "✦",
-    title: "AI workflows",
-    skills: ["LLM prototypes", "Grounded answers", "AI-assisted development"],
+    title: "AI engineering",
+    skills: [
+      "LLM tool calling",
+      "Evidence-grounded workflows",
+      "Agent orchestration",
+      "Automated evaluation",
+    ],
   },
   {
     icon: "◎",
@@ -66,32 +76,22 @@ export default function Home() {
           <div className="figma-hero-content">
             <span className="figma-status-badge">
               <span aria-hidden="true">✦</span>
-              Software engineering for technical products
+              Audio software · DSP tools · AI-assisted engineering
             </span>
 
             <div>
-              <h1>
-                <span>Hello, I&apos;m</span>
-                <strong>{profile.name}</strong>
-              </h1>
+              <h1>I build software that helps engineers understand and improve sound.</h1>
               <p className="figma-hero-role">
-                Software engineer crafting technical products for
-                <em> audio, acoustics, and DSP workflows</em>
+                Audio-focused software engineer working across
+                <em> commercial acoustic applications, embedded DSP, and AI-assisted workflows.</em>
               </p>
               <p className="figma-hero-summary">{profile.detail}</p>
             </div>
 
             <div className="figma-action-row">
               <a className="figma-button figma-button-primary" href="#projects">
-                View my work
+                Explore selected work
                 <ArrowUpRight aria-hidden="true" />
-              </a>
-              <a
-                className="figma-button figma-button-outline"
-                href={profile.bookingUrl}
-              >
-                Book a call
-                <CalendarDays aria-hidden="true" />
               </a>
               <a
                 className="figma-button figma-button-outline"
@@ -99,6 +99,13 @@ export default function Home() {
               >
                 Download CV
                 <Download aria-hidden="true" />
+              </a>
+              <a
+                className="figma-tertiary-link"
+                href="mailto:jaime.castresana@gmail.com"
+              >
+                Contact me
+                <Mail aria-hidden="true" />
               </a>
             </div>
 
@@ -223,8 +230,8 @@ export default function Home() {
         <div className="figma-section-heading">
           <h2>Featured Projects</h2>
           <p>
-            Selected work connecting software engineering, audio technology,
-            grounded AI workflows, and usable technical products.
+            Selected work showing how I connect software, DSP, acoustic
+            engineering, and AI product thinking for technical users.
           </p>
         </div>
         <div className="figma-project-grid">

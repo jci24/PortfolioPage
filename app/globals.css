@@ -2399,7 +2399,8 @@ body {
 
 .figma-hero h1 {
   margin: 0;
-  font-size: clamp(3.3rem, 6vw, 5.6rem);
+  max-width: 12ch;
+  font-size: clamp(3rem, 5.6vw, 5rem);
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 1.02;
@@ -2471,6 +2472,27 @@ body {
 
 .figma-button:hover {
   transform: translateY(-2px);
+}
+
+.figma-tertiary-link {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--figma-muted);
+  padding: 0.75rem 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+
+.figma-tertiary-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.figma-tertiary-link:hover {
+  color: var(--figma-primary);
 }
 
 .figma-button-primary {

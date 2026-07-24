@@ -10,7 +10,7 @@ const allTags = Array.from(new Set(projects.flatMap((project) => project.tags)))
 export const metadata: Metadata = {
   title: "Projects | Jaime Castresana Iza",
   description:
-    "Selected software engineering projects across audio analysis, acoustic workflows, embedded DSP, and technical product development.",
+    "Selected work across AI-assisted acoustic investigation, commercial audio software, embedded DSP, and psychoacoustic product development.",
   alternates: {
     canonical: "/projects",
   },

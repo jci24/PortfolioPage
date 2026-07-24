@@ -12,7 +12,7 @@ const structuredData = {
   name: "Jaime Castresana Iza",
   url: siteUrl,
   image: `${siteUrl}/img/jaime-castresana-portrait.jpg`,
-  jobTitle: "Software Engineer",
+  jobTitle: "Audio Software Engineer",
   email: "mailto:jaime.castresana@gmail.com",
   address: {
     "@type": "PostalAddress",
@@ -38,29 +38,30 @@ const structuredData = {
     "Audio software",
     "Acoustic engineering",
     "Digital signal processing",
+    "AI-assisted engineering",
     "Technical product development",
   ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Jaime Castresana Iza | Portfolio",
+  title: "Jaime Castresana Iza | Audio Software Engineer",
   description:
-    "Software Engineer focused on technical products, audio, DSP tools, and software for specialist users.",
+    "Audio software engineer building DSP tools, acoustic workflows, and AI-assisted engineering products for technical users.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Jaime Castresana Iza | Software Engineer",
+    title: "Jaime Castresana Iza | Audio Software Engineer",
     description:
-      "Technical products, audio and acoustic software, DSP tools, and applied AI.",
+      "DSP tools, acoustic workflows, and AI-assisted engineering products for technical users.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jaime Castresana Iza | Software Engineer",
+    title: "Jaime Castresana Iza | Audio Software Engineer",
     description:
-      "Technical products, audio and acoustic software, DSP tools, and applied AI.",
+      "DSP tools, acoustic workflows, and AI-assisted engineering products for technical users.",
   },
 };
 

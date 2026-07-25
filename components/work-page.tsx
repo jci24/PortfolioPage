@@ -20,7 +20,9 @@ export function WorkPage({ item }: WorkPageProps) {
         </Link>
 
         <div className="premium-work-title" data-reveal>
-          <div className="premium-work-logo">
+          <div
+            className={`premium-work-logo${item.logoDark ? " premium-work-logo-dark" : ""}`}
+          >
             {item.logoSrc ? (
               <Image
                 alt={`${item.company} logo`}

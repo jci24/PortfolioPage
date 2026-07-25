@@ -164,7 +164,9 @@ export default function Home() {
                 { "--reveal-delay": `${index * 70}ms` } as React.CSSProperties
               }
             >
-              <span className="premium-company-mark">
+              <span
+                className={`premium-company-mark${item.logoDark ? " premium-company-mark-dark" : ""}`}
+              >
                 {item.logoSrc ? (
                   <Image
                     alt={`${item.company} logo`}

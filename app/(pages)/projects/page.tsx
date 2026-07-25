@@ -1,7 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowUpRight, Layers3 } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 
@@ -18,107 +19,97 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="projects-index-page">
-      <section className="projects-index-hero">
-        <span className="projects-index-glow" aria-hidden="true" />
-        <div className="projects-index-hero-inner">
-          <Link className="projects-back-link" href="/">
-            <ArrowLeft aria-hidden="true" />
-            Back to portfolio
-          </Link>
-          <span className="figma-status-badge">
-            <Layers3 aria-hidden="true" />
-            {projects.length} selected projects
-          </span>
-          <h1>Featured Projects</h1>
+    <div className="premium-subpage premium-project-index">
+      <RevealObserver />
+      <header className="premium-index-hero">
+        <Link className="premium-back-link" href="/">
+          <ArrowLeft aria-hidden="true" />
+          Portfolio
+        </Link>
+        <div data-reveal>
+          <p className="premium-section-label">
+            Selected work · {projects.length} projects
+          </p>
+          <h1>Built with depth.</h1>
           <p>
-            A focused collection of product and engineering work spanning audio
-            analysis, acoustic workflows, embedded DSP, and AI-assisted technical
-            software.
+            Product and engineering work across acoustic investigation,
+            commercial audio software, embedded DSP, and psychoacoustic
+            workflows.
           </p>
         </div>
-      </section>
+        <AudioVisual className="premium-index-signal" />
+      </header>
 
-      <section className="projects-index-content">
-        <div className="projects-index-grid">
-          {projects.map((project, index) => (
-            <article
-              className="figma-card figma-project-card projects-index-card"
-              key={project.slug}
+      <main className="premium-index-content">
+        {projects.map((project, index) => (
+          <article
+            className="premium-index-project"
+            data-reveal
+            key={project.slug}
+          >
+            <Link
+              aria-label={`View ${project.name}`}
+              className="premium-index-project-visual"
+              href={`/projects/${project.slug}`}
             >
-              <div
-                className={`figma-project-visual figma-project-${(index % 3) + 1}`}
+              <Image
+                alt={project.imageAlt}
+                fill
+                sizes="(max-width: 760px) 100vw, 52vw"
+                src={project.imageSrc}
+              />
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </Link>
+            <div className="premium-index-project-copy">
+              <p className="premium-section-label">{project.classification}</p>
+              <h2>{project.name}</h2>
+              <p>{project.summary}</p>
+              <div className="premium-tag-list">
+                {project.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+              <Link
+                className="premium-inline-link"
+                href={`/projects/${project.slug}`}
               >
-                <Image
-                  alt={project.imageAlt}
-                  className="figma-project-image"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 35vw"
-                  src={project.imageSrc}
-                />
-                <span className="figma-project-shade" aria-hidden="true" />
-                <span className="figma-project-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <strong>{project.classification}</strong>
-              </div>
-              <div className="figma-project-body">
-                <span className="project-classification">
-                  {project.classification}
-                </span>
-                <h2>{project.name}</h2>
-                <p className="figma-card-copy">{project.summary}</p>
-                <div className="figma-chip-list">
-                  {project.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-                <Link
-                  className="figma-button figma-button-outline figma-project-link"
-                  href={`/projects/${project.slug}`}
-                >
-                  View project
-                  <ArrowUpRight aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
+                View case study <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </main>
+
+      <section className="premium-index-themes">
+        <div>
+          <p className="premium-section-label">Across the work</p>
+          <h2>Technical depth, shaped into usable products.</h2>
+        </div>
+        <div className="premium-index-tag-cloud">
+          {allTags.map((tag, index) => (
+            <span key={tag}>
+              <small>{String(index + 1).padStart(2, "0")}</small>
+              {tag}
+            </span>
           ))}
         </div>
       </section>
 
-      <section className="projects-index-expertise">
-        <div className="projects-index-expertise-inner">
-          <div>
-            <span className="figma-status-badge">Project themes</span>
-            <h2>What this work emphasizes</h2>
-            <p>
-              The projects combine technical depth with workflows that help
-              specialist users understand evidence and make confident decisions.
-            </p>
-          </div>
-          <div className="projects-index-tags">
-            {allTags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="projects-index-cta">
+      <section className="premium-detail-cta">
         <div>
-          <h2>Interested in the engineering behind the work?</h2>
+          <p className="premium-section-label">Contact</p>
+          <h2>Interested in the engineering?</h2>
           <p>
-            Each project has a dedicated page with its context, technical focus,
-            and product considerations.
+            Each case study explains its context, technical focus, and product
+            considerations without overstating confidential outcomes.
           </p>
         </div>
-        <a
-          className="figma-button figma-button-primary"
+        <Link
+          className="premium-button premium-button-dark"
           href={profile.bookingUrl}
         >
-          Book a conversation
-          <ArrowUpRight aria-hidden="true" />
-        </a>
+          Book a conversation <ArrowRight aria-hidden="true" />
+        </Link>
       </section>
     </div>
   );

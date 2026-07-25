@@ -8,6 +8,7 @@ import {
   Mail,
   Video,
 } from "lucide-react";
+import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -22,95 +23,92 @@ export const metadata: Metadata = {
 const meetingDetails = [
   {
     icon: Clock3,
-    label: "Short and focused",
-    value: "An introductory conversation",
+    label: "Format",
+    value: "A short, focused introductory conversation",
   },
   {
     icon: Video,
-    label: "Meet online",
-    value: "Google Meet details arrive by email",
+    label: "Location",
+    value: "Online · Google Meet details arrive by email",
   },
   {
     icon: CalendarDays,
-    label: "Your time zone",
-    value: "Available times adjust automatically",
+    label: "Time zone",
+    value: "Available times adjust to your location",
   },
 ];
 
 export default function BookPage() {
   return (
-    <div className="booking-page">
-      <div className="booking-background" aria-hidden="true">
-        <span className="booking-orbit booking-orbit-one" />
-        <span className="booking-orbit booking-orbit-two" />
-      </div>
-
-      <div className="booking-shell">
-        <Link className="projects-back-link booking-back-link" href="/">
+    <div className="premium-subpage premium-booking-page">
+      <RevealObserver />
+      <div className="premium-booking-shell">
+        <Link className="premium-back-link" href="/">
           <ArrowLeft aria-hidden="true" />
-          Back to portfolio
+          Portfolio
         </Link>
 
-        <div className="booking-layout">
-          <section className="booking-intro">
-            <span className="figma-status-badge">
-              <CalendarDays aria-hidden="true" />
-              Schedule a conversation
-            </span>
-            <div>
-              <p className="booking-kicker">A direct line, without the email chain.</p>
-              <h1>Let&apos;s find a time that works.</h1>
-              <p className="booking-lead">
-                Choose an available slot to discuss software engineering roles,
-                technical products, or work in audio and DSP.
-              </p>
-            </div>
+        <header className="premium-booking-intro" data-reveal>
+          <div>
+            <p className="premium-section-label">Schedule a conversation</p>
+            <h1>Let&apos;s find a time that works.</h1>
+            <p>
+              Choose an available slot to discuss software engineering roles,
+              technical products, or work in audio and DSP.
+            </p>
+          </div>
+          <AudioVisual className="premium-booking-signal" variant="waveform" />
+        </header>
 
-            <div className="booking-details">
-              {meetingDetails.map(({ icon: Icon, label, value }) => (
-                <div className="booking-detail" key={label}>
-                  <span>
-                    <Icon aria-hidden="true" />
-                  </span>
-                  <div>
-                    <strong>{label}</strong>
-                    <p>{value}</p>
-                  </div>
+        <div className="premium-booking-layout">
+          <aside className="premium-booking-details" data-reveal>
+            {meetingDetails.map(({ icon: Icon, label, value }, index) => (
+              <div key={label}>
+                <span>
+                  <Icon aria-hidden="true" />
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <strong>{label}</strong>
+                  <p>{value}</p>
                 </div>
-              ))}
-            </div>
-
-            <p className="booking-fallback">
-              Prefer email?{" "}
+              </div>
+            ))}
+            <p className="premium-booking-email">
+              Prefer email?
               <a href="mailto:jaime.castresana@gmail.com">
                 <Mail aria-hidden="true" />
                 jaime.castresana@gmail.com
               </a>
             </p>
-          </section>
+          </aside>
 
-          <section className="booking-calendar-card" aria-label="Appointment calendar">
-            <div className="booking-calendar-topbar">
+          <section
+            aria-label="Appointment calendar"
+            className="premium-calendar-card"
+            data-reveal
+          >
+            <div className="premium-calendar-topbar">
               <span />
               <p>Available conversations</p>
               <small>Copenhagen · CET/CEST</small>
             </div>
             <iframe
-              className="booking-calendar"
+              className="premium-calendar"
               height="700"
               loading="eager"
               src={profile.bookingEmbedUrl}
               title="Book an appointment with Jaime Castresana Iza"
               width="100%"
             />
-            <div className="booking-calendar-fallback">
+            <div className="premium-calendar-fallback">
               <p>Calendar not loading?</p>
               <a
                 href={profile.bookingExternalUrl}
                 rel="noreferrer"
                 target="_blank"
               >
-                Open the secure booking page
+                Open Google&apos;s secure booking page
                 <ArrowUpRight aria-hidden="true" />
               </a>
             </div>

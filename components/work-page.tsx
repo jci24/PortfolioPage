@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { ExperienceItem } from "@/data/types";
+import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { profile } from "@/data/profile";
 
 type WorkPageProps = {
@@ -10,92 +11,100 @@ type WorkPageProps = {
 
 export function WorkPage({ item }: WorkPageProps) {
   return (
-    <article className="experience-detail-page">
-      <header className="experience-detail-hero">
-        <div className="experience-detail-hero-inner">
-          <Link className="projects-back-link" href="/#experience">
-            <ArrowLeft aria-hidden="true" />
-            Experience overview
-          </Link>
+    <article className="premium-subpage premium-work-page">
+      <RevealObserver />
+      <header className="premium-detail-hero premium-work-hero">
+        <Link className="premium-back-link" href="/#experience">
+          <ArrowLeft aria-hidden="true" />
+          Experience overview
+        </Link>
 
-          <div className="experience-detail-heading">
+        <div className="premium-work-title" data-reveal>
+          <div className="premium-work-logo">
             {item.logoSrc ? (
-              <div
-                className={`experience-detail-logo${item.logoDark ? " experience-detail-logo-dark" : ""}`}
-              >
-                <Image
-                  alt={`${item.company} logo`}
-                  height={item.logoHeight ?? 40}
-                  src={item.logoSrc}
-                  width={item.logoWidth ?? 120}
-                />
-              </div>
-            ) : null}
-            <div>
-              <span className="figma-status-badge">
-                <MapPin aria-hidden="true" />
-                {profile.location}
-              </span>
-              <h1>{item.title}</h1>
-              <p className="experience-detail-company">{item.company}</p>
-              <p className="experience-detail-period">{item.period}</p>
-            </div>
+              <Image
+                alt={`${item.company} logo`}
+                height={item.logoHeight ?? 40}
+                src={item.logoSrc}
+                width={item.logoWidth ?? 120}
+              />
+            ) : (
+              item.label
+            )}
           </div>
-          <p className="experience-detail-summary">{item.summary}</p>
+          <div>
+            <p className="premium-section-label">
+              {item.dateLabel} · {profile.location}
+            </p>
+            <h1>{item.title}</h1>
+            <p className="premium-work-company">{item.company}</p>
+          </div>
+        </div>
+        <p className="premium-work-summary" data-reveal>
+          {item.summary}
+        </p>
+        <div className="premium-detail-wave">
+          <AudioVisual className="premium-waveform" variant="waveform" />
         </div>
       </header>
 
-      <div className="experience-detail-content">
-        <section className="experience-contribution-section">
+      <div className="premium-detail-content">
+        <section className="premium-detail-section" data-reveal>
           <div>
-            <span>Contribution</span>
+            <p className="premium-section-label">01 — Contribution</p>
             <h2>What I worked on</h2>
           </div>
-          <div className="case-study-list">
-            {item.bullets.map((bullet) => (
-              <p key={bullet}>
-                <CheckCircle2 aria-hidden="true" />
-                {bullet}
-              </p>
+          <ol>
+            {item.bullets.map((bullet, index) => (
+              <li key={bullet}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{bullet}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
-        <section className="experience-stack-section">
+        <section className="premium-toolkit" data-reveal>
           <div>
-            <span>Toolkit</span>
+            <p className="premium-section-label">02 — Toolkit</p>
             <h2>Technologies and domains</h2>
           </div>
-          <div className="figma-chip-list">
-            {item.stack.map((entry) => (
-              <span key={entry}>{entry}</span>
+          <div className="premium-toolkit-grid">
+            {item.stack.map((entry, index) => (
+              <span key={entry}>
+                <small>{String(index + 1).padStart(2, "0")}</small>
+                {entry}
+              </span>
             ))}
           </div>
         </section>
 
-        <aside className="case-study-note">
-          <strong>Employment timeline</strong>
-          <p>
-            {item.period}. Additional employment and education details are
-            available in the downloadable CV.
-          </p>
+        <aside className="premium-disclosure" data-reveal>
+          <span>Timeline</span>
+          <div>
+            <h2>Employment period</h2>
+            <p>
+              {item.period}. Additional employment and education details are
+              available in the downloadable CV.
+            </p>
+          </div>
         </aside>
 
-        <section className="case-study-next">
+        <section className="premium-detail-cta" data-reveal>
           <div>
-            <h2>Want to discuss this experience?</h2>
+            <p className="premium-section-label">Continue the conversation</p>
+            <h2>Discuss this experience.</h2>
             <p>
               I can provide more detail about responsibilities, collaboration,
               and technical decisions where confidentiality allows.
             </p>
           </div>
-          <a
-            className="figma-button figma-button-primary"
+          <Link
+            className="premium-button premium-button-dark"
             href={profile.bookingUrl}
           >
-            Book a conversation
-            <ArrowUpRight aria-hidden="true" />
-          </a>
+            Book a conversation <ArrowUpRight aria-hidden="true" />
+          </Link>
         </section>
       </div>
     </article>

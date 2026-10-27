@@ -9,7 +9,7 @@ export function Footer() {
           <Link className="premium-footer-brand" href="/">
             JC
           </Link>
-          <p>Audio software · DSP tools · AI-assisted engineering</p>
+          <p>Product engineering · Applied AI · Audio/DSP</p>
         </div>
         <nav aria-label="Footer">
           <a href="https://github.com/jci24" rel="noreferrer" target="_blank">

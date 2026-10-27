@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import type { ProjectItem } from "@/data/types";
 import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { profile } from "@/data/profile";
+import { ProjectVisual } from "@/components/project-visual";
 
 type ProjectPageProps = {
   item: ProjectItem;
@@ -79,17 +79,15 @@ export function ProjectPage({ item }: ProjectPageProps) {
       <div className="premium-detail-content">
         <figure className="premium-case-visual" data-reveal>
           <div>
-            <Image
-              alt={item.imageAlt}
-              fill
+            <ProjectVisual
+              item={item}
               priority
               sizes="(max-width: 768px) 100vw, 1120px"
-              src={item.imageSrc}
             />
             <span>{item.classification}</span>
           </div>
           <figcaption>
-            Illustrative photography · {item.imageCredit}
+            {item.visualKind === "justcall" ? "Interface visual" : "Illustrative photography"} · {item.imageCredit}
           </figcaption>
         </figure>
 

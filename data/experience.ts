@@ -14,13 +14,24 @@ export const experience: ExperienceItem[] = [
     dateLabel: "Sep 2023 - Present",
     group: "latest",
     summary:
-      "Commercial acoustic engineering software for Transfer Path Analysis and noise-emission modelling workflows.",
+      "Full-stack ownership of commercial engineering features for Transfer Path Analysis (TPA), noise-emission modelling, and sound-quality workflows.",
     bullets: [
-      "Built product software for technical acoustic users with C#/.NET, React, FastEndpoints, testing, and CI/CD.",
-      "Worked on workflows for acoustic data, model comparison, measured-versus-predicted sound, SPL, spectra, spectrograms, and validation.",
-      "Collaborated with product owners, UI designers, architects, application engineers, and acoustic experts.",
+      "Owned multiple product features across requirements, technical design, C#/.NET backend work, React frontend implementation, automated testing, and delivery.",
+      "Gathered requirements from users, application engineers, and domain experts, separating essential needs from optional improvements before implementation.",
+      "Compared UI/UX, algorithm, and visualization-library alternatives; documented trade-offs and presented decisions to stakeholders and potential users.",
+      "Ran user tests and specialist reviews for acoustic workflows covering model comparison, measured-versus-predicted sound, spectra, spectrograms, and validation.",
       "Contributed to a Sound Quality proof of concept involving loudness, sharpness, roughness, tonality, workflow design, and user testing.",
     ],
+    ownershipExample: {
+      problem:
+        "A new analysis workflow needed to make dense engineering results understandable without hiding the underlying acoustic evidence.",
+      decisions:
+        "I gathered user and domain requirements, separated must-haves from optional ideas, and compared interaction, algorithm, and visualization-library options.",
+      implementation:
+        "I carried the selected approach through backend and frontend development, integrated the visualization library, and added automated coverage around the workflow.",
+      result:
+        "The working feature progressed through expert review and user testing, with the decisions and trade-offs documented for the wider product team.",
+    },
     stack: [
       "C#/.NET",
       "React",
@@ -44,13 +55,15 @@ export const experience: ExperienceItem[] = [
     dateLabel: "May 2022 - Jun 2023",
     group: "earlier",
     summary:
-      "Audio amplifier R&D, testing, and embedded audio processing work in a product-focused setting.",
+      "Software-assisted amplifier R&D spanning test automation, network resilience, result analysis, and embedded audio processing.",
     bullets: [
-      "Worked with amplifier testing, analysis tooling, TCP/IP, AVB/MoIP, and network stress testing.",
+      "Extended an existing Python and pytest test framework with scripts for amplifier and communication testing.",
+      "Exercised network traffic stress, audio and communication disruption, power cycling, triggering, and recovery behaviour.",
+      "Processed test results in Python and produced plots that made failures and system behaviour easier to inspect.",
+      "Contributed to existing testing pipelines rather than treating automation as a standalone prototype.",
       "Completed an MSc thesis on digital audio crossovers and embedded processing for loudspeaker systems on ARM Cortex-M7.",
-      "Gained practical exposure to DSP concepts, loudspeaker signal chains, and engineering tradeoffs in audio products.",
     ],
-    stack: ["Embedded audio", "DSP", "ARM Cortex-M7", "Testing", "Networking"],
+    stack: ["Python", "pytest", "Test automation", "Networking", "DSP", "ARM Cortex-M7"],
   },
 ];
 

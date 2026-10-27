@@ -3,20 +3,20 @@ import type { Profile } from "@/data/types";
 export const profile: Profile = {
   name: "Jaime Castresana Iza",
   location: "Copenhagen, Denmark",
-  headline: "Audio Software Engineer | DSP Tools & AI-Assisted Engineering",
+  headline: "Software Engineer | Product Engineering, Applied AI & Audio",
   summary:
-    "Audio-focused software engineer building DSP tools, acoustic workflows, and AI-assisted engineering products.",
+    "Software engineer building useful products from complex data.",
   detail:
-    "I turn complex audio analysis, measurement data, and specialist workflows into reliable software that helps engineers make better product decisions.",
+    "I develop full-stack engineering software and independent AI applications, combining user discovery, backend and frontend implementation, testing, and an audio/DSP foundation.",
   bookingUrl: "/book",
   bookingEmbedUrl:
     "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2vYWFVsYpQdj9CxpeTTOKR-D5bmk73ttiV0QndPLoitwumR3rtqQVA9nX3drDaW4lWVX1aMadY?gv=true",
   bookingExternalUrl: "https://calendar.app.google/TdAHsp3c5SrZADC98",
   targetRoles: [
+    "Full-Stack Software Engineer",
+    "Applied AI Engineer",
     "Audio Software Engineer",
-    "DSP Tools Engineer",
     "R&D Software Engineer",
-    "AI Product Engineer",
   ],
   education: [
     {

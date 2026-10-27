@@ -2,6 +2,42 @@ import type { ProjectItem } from "@/data/types";
 
 const projectItems: ProjectItem[] = [
   {
+    slug: "justcall",
+    name: "JustCall - reliable voice practice",
+    classification: "Independent project · Active development",
+    imageSrc: "/img/projects/soundlens.jpg",
+    imageAlt:
+      "JustCall mobile call flow showing learner identity, voice connection, and post-call evidence",
+    imageCredit: "Product interface based on the current implementation",
+    visualKind: "justcall",
+    summary:
+      "A voice-first language-practice product with a React Native app, authenticated TypeScript backend, real-time AI conversation, and explicit session-reliability safeguards.",
+    context:
+      "A useful speaking product needs more than a working voice SDK: the learner must be authenticated, the microphone and provider lifecycle must stay predictable, and later feedback must remain tied to the correct conversation evidence.",
+    contribution: [
+      "Defined and built the product as an independent, story-by-story full-stack project.",
+      "Built the Expo and React Native mobile flow for microphone permission, learner identity, call controls, recovery states, and post-call source status.",
+      "Built a TypeScript API with Hono, Zod, Supabase JWT verification, PostgreSQL-backed conversation ownership, and short-lived provider sessions.",
+      "Integrated ElevenLabs through a native iOS bridge after reproducing and isolating a reliability issue in the original React Native transport.",
+      "Designed the feedback boundary so model proposals are checked against owned source evidence before they can be presented to a learner.",
+    ],
+    approach: [
+      "Keep mobile UI, backend use cases, authentication, provider transport, and persistence behind explicit boundaries.",
+      "Use attempt identity, cancellation, request deadlines, and provider cleanup to prevent late async work from reopening an ended call.",
+      "Treat AI output as a proposal over traceable evidence, with deterministic validation and honest insufficiency states.",
+      "Ship one approved vertical slice at a time and keep production, provider, data-retention, and release gates explicit.",
+    ],
+    validation: [
+      "Unit, interaction, API-contract, authorization, cancellation, and database tests cover deterministic product and session behaviour.",
+      "Ten consecutive two-way calls passed on an iPhone 12 without restarting the app; permission denial, cancellation, retry, network-loss recovery, and app-close cleanup were also walked through on-device.",
+      "Current automated evaluation checks evidence binding, parsing, rubric limits, unsupported inputs, and safe failure paths for the first feedback slice.",
+      "Production deployment, broader learner calibration, linguistic effectiveness, and long-term learning outcomes remain unvalidated and are not claimed.",
+    ],
+    scopeNote:
+      "Independent project in active development. The real iOS call path and local backend have been validated in development; production deployment and learner-outcome claims remain outside the current evidence.",
+    tags: ["TypeScript", "React Native", "Hono", "Supabase", "Voice AI", "Testing"],
+  },
+  {
     slug: "ai-acoustic-analysis",
     name: "SoundLens - AI-assisted acoustic investigation",
     classification: "Personal project",
@@ -18,7 +54,7 @@ const projectItems: ProjectItem[] = [
       "Designed the product direction, backend/frontend architecture, and technical-user workflow.",
       "Built deterministic waveform, spectrum, metric, tonal, and region-scoped analysis.",
       "Implemented an AI Copilot using structured tool calls over typed evidence, units, and limitations.",
-      "Created traceable reports, refusal behaviour, and automated evaluation for reliable AI-assisted analysis.",
+      "Created traceable reports, refusal behaviour, and automated evaluation for evidence-grounded AI-assisted analysis.",
       "Designed the roadmap toward batch comparison, anomaly investigation, and scalable engineering workflows.",
     ],
     approach: [
@@ -28,9 +64,9 @@ const projectItems: ProjectItem[] = [
       "Structure analysis capabilities as tools that can support increasingly complex investigation workflows.",
     ],
     validation: [
-      "Automated backend, frontend, and workflow behaviour tests.",
-      "Checks for missing evidence, unsupported questions, and safe refusal behaviour.",
-      "Answer evaluations against the exact analysis evidence referenced in each response.",
+      "Automated backend, frontend, and workflow tests check deterministic calculations, tool contracts, and expected UI behaviour.",
+      "Evaluation cases check missing evidence, unsupported questions, scope and unit handling, and safe refusal behaviour.",
+      "Generated answers are checked against the exact analysis evidence they reference; real-user usefulness and production reliability remain separate validation work.",
     ],
     scopeNote:
       "Active personal project; not presented as a production deployment.",
@@ -106,7 +142,7 @@ const projectItems: ProjectItem[] = [
   },
   {
     slug: "acoustic-engineering-software",
-    name: "Acoustic engineering software for TPA and noise-emission modelling",
+    name: "Acoustic engineering software for Transfer Path Analysis (TPA) and noise-emission modelling",
     classification: "Professional work",
     imageSrc: "/img/projects/acoustic-software.jpg",
     imageAlt:
@@ -115,7 +151,7 @@ const projectItems: ProjectItem[] = [
     summary:
       "Full-stack commercial software for acoustic analysis, model comparison, and validation.",
     context:
-      "Acoustic engineers needed clearer workflows for comparing measured and predicted results in TPA and noise-emission models.",
+      "Acoustic engineers needed clearer workflows for comparing measured and predicted results in Transfer Path Analysis (TPA) and noise-emission models.",
     contribution: [
       "Reduced fragmented expert tasks into guided workflows connecting import, analysis, model comparison, and validation.",
       "Built full-stack product functionality with C#/.NET, React, and FastEndpoints.",
@@ -139,6 +175,7 @@ const projectItems: ProjectItem[] = [
 ];
 
 const featuredProjectOrder = [
+  "justcall",
   "ai-acoustic-analysis",
   "acoustic-engineering-software",
   "digital-crossovers-arm",

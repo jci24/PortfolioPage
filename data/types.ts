@@ -36,6 +36,12 @@ export type ExperienceItem = {
   group: "latest" | "earlier";
   summary: string;
   bullets: string[];
+  ownershipExample?: {
+    problem: string;
+    decisions: string;
+    implementation: string;
+    result: string;
+  };
   stack: string[];
 };
 
@@ -47,6 +53,7 @@ export type ProjectItem = {
   imageSrc: string;
   imageAlt: string;
   imageCredit: string;
+  visualKind?: "photography" | "justcall";
   period?: string;
   summary: string;
   context: string;

@@ -13,6 +13,7 @@ import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { experience } from "@/data/experience";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { ProjectVisual } from "@/components/project-visual";
 
 const skillGroups = [
   {
@@ -66,20 +67,20 @@ export default function Home() {
       <section className="premium-hero" id="home">
         <div className="premium-hero-copy">
           <p className="premium-eyebrow" data-reveal>
-            Audio software engineer · Copenhagen
+            Software engineer · Product engineering · Copenhagen
           </p>
           <h1 data-reveal style={{ "--reveal-delay": "70ms" } as React.CSSProperties}>
-            Engineering better ways to understand{" "}
-            <em>sound.</em>
+            Software engineer building useful products from{" "}
+            <em>complex data.</em>
           </h1>
           <p
             className="premium-hero-lead"
             data-reveal
             style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
           >
-            I build DSP tools, acoustic workflows, and AI-assisted products
-            that help technical users move from complex evidence to clear
-            engineering decisions.
+            I develop full-stack engineering software and independent AI
+            applications, combining user discovery, backend and frontend
+            implementation, testing, and an audio/DSP foundation.
           </p>
 
           <AudioVisual className="premium-frequency-bars" />
@@ -130,7 +131,7 @@ export default function Home() {
         >
           <div className="premium-portrait-frame">
             <Image
-              alt="Jaime Castresana Iza, audio software engineer"
+              alt="Jaime Castresana Iza, software engineer"
               className="premium-portrait"
               fill
               priority
@@ -143,7 +144,7 @@ export default function Home() {
             <AudioVisual className="premium-waveform" variant="waveform" />
           </div>
           <p className="premium-portrait-caption">
-            Software · acoustics · DSP · AI
+            Software · product · applied AI · audio
           </p>
         </div>
       </section>
@@ -208,24 +209,22 @@ export default function Home() {
             <h2>Built with depth.</h2>
           </div>
           <p>
-            From embedded audio processing to evidence-grounded acoustic
-            investigation tools.
+            From reliable voice products and applied AI to commercial acoustic
+            software and embedded DSP.
           </p>
         </div>
 
         <article className="premium-featured-project" data-reveal>
           <div className="premium-featured-visual">
-            <Image
-              alt={featuredProject.imageAlt}
-              className="premium-featured-image"
-              fill
+            <ProjectVisual
+              imageClassName="premium-featured-image"
+              item={featuredProject}
               sizes="(max-width: 900px) 100vw, 52vw"
-              src={featuredProject.imageSrc}
             />
             <div className="premium-signal-panel">
               <div>
-                <span>SoundLens</span>
-                <span>Investigation / DSP evidence</span>
+                <span>{featuredProject.name}</span>
+                <span>{featuredProject.classification}</span>
               </div>
               <AudioVisual
                 className="premium-project-waveform"
@@ -234,7 +233,7 @@ export default function Home() {
             </div>
           </div>
           <div className="premium-featured-copy">
-            <p className="premium-section-label">Featured personal project</p>
+            <p className="premium-section-label">Featured independent project</p>
             <h3>{featuredProject.name}</h3>
             <p>{featuredProject.summary}</p>
             <dl>
@@ -272,12 +271,10 @@ export default function Home() {
               }
             >
               <div className="premium-project-image-wrap">
-                <Image
-                  alt={project.imageAlt}
-                  className="premium-project-image"
-                  fill
+                <ProjectVisual
+                  imageClassName="premium-project-image"
+                  item={project}
                   sizes="(max-width: 760px) 100vw, 33vw"
-                  src={project.imageSrc}
                 />
                 <span>{String(index + 2).padStart(2, "0")}</span>
               </div>
@@ -355,15 +352,17 @@ export default function Home() {
         <div data-reveal>
           <p className="premium-section-label">04 — About</p>
           <h2>
-            Sound engineer.
+            Software engineer.
             <br />
-            Product thinker.
+            Audio background.
+            <br />
+            Product mindset.
           </h2>
           <p>
-            My background spans embedded DSP, commercial acoustic software, and
-            AI-assisted engineering workflows. I care about turning specialist
-            analysis into products that remain rigorous, understandable, and
-            useful in real engineering work.
+            My work spans full-stack commercial software, independent AI
+            products, embedded DSP, and engineering test automation. I care
+            about turning complex evidence and specialist workflows into
+            reliable products people can understand and use.
           </p>
           <blockquote className="premium-about-quote">
             The most interesting problems sit at the intersection of signal
@@ -381,7 +380,7 @@ export default function Home() {
           </div>
           <div>
             <dt>Focus</dt>
-            <dd>DSP · Acoustics · AI engineering tools</dd>
+            <dd>Full-stack products · Applied AI · Audio/DSP</dd>
           </div>
           <div>
             <dt>Current role</dt>
@@ -394,13 +393,13 @@ export default function Home() {
         <div data-reveal>
           <p className="premium-section-label">05 — Contact</p>
           <h2>
-            Let&apos;s build better
+            Let&apos;s build useful
             <br />
-            audio products.
+            technical products.
           </h2>
           <p>
-            Open to thoughtful conversations about audio software, DSP tools,
-            and AI-assisted engineering.
+            Open to thoughtful conversations about full-stack product
+            engineering, applied AI, and audio software.
           </p>
         </div>
         <div className="premium-contact-links" data-reveal>

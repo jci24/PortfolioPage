@@ -1,17 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { AudioVisual, RevealObserver } from "@/components/audio-visuals";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { ProjectVisual } from "@/components/project-visual";
 
 const allTags = Array.from(new Set(projects.flatMap((project) => project.tags)));
 
 export const metadata: Metadata = {
   title: "Projects | Jaime Castresana Iza",
   description:
-    "Selected work across AI-assisted acoustic investigation, commercial audio software, embedded DSP, and psychoacoustic product development.",
+    "Selected work across full-stack product engineering, applied AI, acoustic software, embedded DSP, and technical-user workflows.",
   alternates: {
     canonical: "/projects",
   },
@@ -32,9 +32,8 @@ export default function ProjectsPage() {
           </p>
           <h1>Built with depth.</h1>
           <p>
-            Product and engineering work across acoustic investigation,
-            commercial audio software, embedded DSP, and psychoacoustic
-            workflows.
+            Product and engineering work across applied AI, reliable voice
+            systems, commercial acoustic software, and embedded DSP.
           </p>
         </div>
         <AudioVisual className="premium-index-signal" />
@@ -52,11 +51,9 @@ export default function ProjectsPage() {
               className="premium-index-project-visual"
               href={`/projects/${project.slug}`}
             >
-              <Image
-                alt={project.imageAlt}
-                fill
+              <ProjectVisual
+                item={project}
                 sizes="(max-width: 760px) 100vw, 52vw"
-                src={project.imageSrc}
               />
               <span>{String(index + 1).padStart(2, "0")}</span>
             </Link>

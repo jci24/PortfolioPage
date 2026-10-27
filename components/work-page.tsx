@@ -66,9 +66,24 @@ export function WorkPage({ item }: WorkPageProps) {
           </ol>
         </section>
 
+        {item.ownershipExample ? (
+          <section className="premium-ownership-example" data-reveal>
+            <div>
+              <p className="premium-section-label">02 — Selected example</p>
+              <h2>Ownership in practice</h2>
+            </div>
+            <dl>
+              <div><dt>Problem</dt><dd>{item.ownershipExample.problem}</dd></div>
+              <div><dt>Decisions</dt><dd>{item.ownershipExample.decisions}</dd></div>
+              <div><dt>Implementation</dt><dd>{item.ownershipExample.implementation}</dd></div>
+              <div><dt>Observed result</dt><dd>{item.ownershipExample.result}</dd></div>
+            </dl>
+          </section>
+        ) : null}
+
         <section className="premium-toolkit" data-reveal>
           <div>
-            <p className="premium-section-label">02 — Toolkit</p>
+            <p className="premium-section-label">{item.ownershipExample ? "03" : "02"} — Toolkit</p>
             <h2>Technologies and domains</h2>
           </div>
           <div className="premium-toolkit-grid">
